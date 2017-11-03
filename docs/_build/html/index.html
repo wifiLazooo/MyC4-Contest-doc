@@ -1,0 +1,226 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MyC4 Sezione Contest &#8212; Read the Docs Template 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">Read the Docs Template 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="myc4-sezione-contest">
+<h1>MyC4 Sezione Contest<a class="headerlink" href="#myc4-sezione-contest" title="Permalink to this headline">¶</a></h1>
+<p>La seguente documentazione riguarda la modalità di integrazione tra <br />
+l’app MyCarrefour e la nuova sezione dedicata ai contest Carrefour.</p>
+<p>La sezione contiene una index page in cui sono presenti in forma di elenco <br />
+con preview, i contest attivi ed i contest che verranno attivati a breve.</p>
+<p>Al click di ognuno dei contest attivi, si aprirà una pagina dedicata al contest cliccato, <br />
+al quale, l’utente potrà partecipare, senza uscire dall’app MyCarrefour.</p>
+<div class="section" id="funzionalita">
+<h2>Funzionalità<a class="headerlink" href="#funzionalita" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Carousel gestibile da CMS</li>
+<li>Indice contest attivi e futuri, gestibile da CMS</li>
+<li>Dettaglio contest ottimizzato per la visualizzazione e la fruizione in app</li>
+<li>Metadati aggiuntivi per ogni contest, gestibili da CMS</li>
+</ul>
+</div>
+<div class="section" id="content-management-system">
+<h2>Content Management System<a class="headerlink" href="#content-management-system" title="Permalink to this headline">¶</a></h2>
+<p>È possibile gestire l’elenco dei contest ed i loro metadati, <br />
+accedendo con un utenza “admin” o “editor” al seguente link <a class="reference external" href="https://app.contentful.com/spaces/67w5ozj5347n/">https://app.contentful.com/spaces/67w5ozj5347n/</a></p>
+<p>Sono gestiti:</p>
+<ul class="simple">
+<li>Contest</li>
+<li>Slide del carousel</li>
+</ul>
+<dl class="docutils">
+<dt><strong>Contest</strong></dt>
+<dd><p class="first">Ogni contest possiede metadati direttamente estrapolati dalla sua versione web <br />
+con in aggiunta alcuni metadati dedicati al contest in-app</p>
+<ul class="last simple">
+<li>Data inizio e data di fine concorso</li>
+<li>Testo di help</li>
+<li>Cover image</li>
+<li>Aspetto grafico</li>
+<li>Sitemap interna</li>
+</ul>
+</dd>
+<dt><strong>Slide del carousel</strong></dt>
+<dd><p class="first">Può essere gestita ogni slide del carousel, personalizzandone il contenuto, <br />
+immagine di sfondo e call to action (opzionale).</p>
+<p class="last">In presenza di una sola slide il carousel sarà un componente fisso, senza possibilità di slide.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="integrazione-con-app-myc4">
+<h2>Integrazione con app myC4<a class="headerlink" href="#integrazione-con-app-myc4" title="Permalink to this headline">¶</a></h2>
+<p>Il modulo è strutturato in maniera da integrarsi con l’app myCarrefour v4.* <br />
+e ne condivide la tecnologia Cordova.</p>
+<p>Per l’integrazione sarà sufficiente:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Includere lo script “myC4-contest.js” all’interno della index dell’app</li>
+<li>Importare i file di progetto all’interno di una folder  <br /></li>
+</ul>
+<p>esposta dal webserver di cordova. Di default il modulo punta alla folder “/myC4-contest” che dovrà essere presente <br />
+(altrimenti è possibile configurarne una differente intervenendo sulla variabile “baseFolder” nel file “myC4-contest.js”)
+* Includere il tag &lt;my-c4-contest&gt;&lt;/my-c4-contest&gt; all’interno della pagina dedicata ai contest
+* Inizializzare il modulo</p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Inizializzazione del modulo</strong></dt>
+<dd><p class="first">Per inizializzare il modulo, una volta eseguiti gli step di integrazione, si deve:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">success</span> <span class="o">=</span> <span class="n">function</span><span class="p">(){</span>
+        <span class="o">//</span> <span class="n">INITIALIZATION</span> <span class="n">SUCCESS</span>
+<span class="p">};</span>
+
+<span class="n">var</span> <span class="n">error</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">){</span>
+        <span class="o">//</span> <span class="n">INITIALIZATION</span> <span class="n">ERROR</span>
+<span class="p">};</span>
+
+<span class="n">var</span> <span class="n">requestLogin</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">){</span>
+        <span class="o">//</span> <span class="n">user</span> <span class="ow">not</span> <span class="n">logged</span><span class="p">,</span> <span class="n">request</span> <span class="n">to</span> <span class="n">login</span> <span class="k">while</span> <span class="ow">in</span> <span class="n">contest</span>
+        <span class="o">//</span><span class="n">Redirect</span> <span class="n">to</span> <span class="n">register</span> <span class="n">page</span> <span class="n">expected</span>
+<span class="p">};</span>
+
+<span class="n">var</span> <span class="n">requestRegistration</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">){</span>
+        <span class="o">//</span> <span class="n">user</span> <span class="ow">not</span> <span class="n">logged</span><span class="p">,</span> <span class="n">request</span> <span class="n">to</span> <span class="n">register</span> <span class="k">while</span> <span class="ow">in</span> <span class="n">contest</span>
+        <span class="o">//</span><span class="n">Redirect</span> <span class="n">to</span> <span class="n">register</span> <span class="n">page</span> <span class="n">expected</span>
+<span class="p">};</span>
+
+<span class="n">MyC4Contests</span>
+        <span class="o">.</span><span class="n">init</span><span class="p">({</span>
+                <span class="n">isUserLogged</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="o">//</span><span class="ow">or</span> <span class="n">false</span>
+                <span class="n">userId</span><span class="p">:</span> <span class="s2">&quot;xyz&quot;</span><span class="p">,</span> <span class="o">//</span><span class="k">if</span> <span class="n">isUserLogged</span> <span class="ow">is</span> <span class="n">false</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">emty</span>
+                <span class="n">onInit</span><span class="p">:</span> <span class="n">success</span><span class="p">,</span>  <span class="o">//</span><span class="n">called</span> <span class="n">after</span> <span class="n">initialization</span>
+                <span class="n">onError</span><span class="p">:</span> <span class="n">error</span><span class="p">,</span> <span class="o">//</span><span class="n">called</span> <span class="k">if</span> <span class="n">error</span> <span class="k">with</span> <span class="n">user</span>
+                <span class="n">onRequestLogin</span><span class="p">:</span> <span class="n">requestLogin</span><span class="p">,</span>
+                <span class="n">onRequestRegistration</span><span class="p">:</span> <span class="n">requestRegistration</span>
+
+        <span class="p">});</span>
+</pre></div>
+</div>
+<p>La chiamata MyC4Contests.init deve essere effettuata quando &lt;my-c4-contest&gt;&lt;/my-c4-contest&gt; è presente nel dom <br />
+e viene effettuata ogni volta che l’utente apre la pagina contest dal menu dell’app (viene gestita una cache interna <br />
+per evitare di chiedere a SSO l utente piu volte)</p>
+<ul class="last simple">
+<li>isUserLogged è una variabile booleana che indica se l’utente è loggato</li>
+<li>userId è una stringa che contiene l’id di interscambio per ottenere l utente dal servizio SSO</li>
+<li>onInit riceve una funzione che viene chiamata non appena il modulo è inizializzato</li>
+<li>onError riceve una funzione che viene chiamata in caso di errore (con l utente, errori di rete vengono gestiti dal modulo)</li>
+<li>onRequestLogin riceve una funzione  che viene chiamata quando l’utente (non loggato) chiede dal contest di effettuare login</li>
+<li>onRequestRegistration  riceve una funzione  che viene chiamata quando l’utente (non loggato) chiede dal contest di effettuare registrazione</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="integrazione-stili-e-ui">
+<h2>Integrazione stili e ui<a class="headerlink" href="#integrazione-stili-e-ui" title="Permalink to this headline">¶</a></h2>
+<p>Il modulo carica dinamicamente il file con gli stili css presente nel path <br />
+(è utilizzato un selettore che modifica solamente gli stili degli elementi interni al modulo).</p>
+<p>Il modulo carica dinamicamente jquery per le modifiche al dom, solamente se non è gia presente.</p>
+<p>sono richieste specifiche aggiuntive per l’integrazione UI (ambiente grafico ionic? jquery ui?)…</p>
+</div>
+<div class="section" id="cronologia-revisioni">
+<h2>Cronologia revisioni<a class="headerlink" href="#cronologia-revisioni" title="Permalink to this headline">¶</a></h2>
+<p>Corrente v1.0</p>
+<ul class="simple">
+<li>v1.0</li>
+</ul>
+</div>
+<div class="section" id="autori">
+<h2>Autori<a class="headerlink" href="#autori" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Gioele Meoni</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MyC4 Sezione Contest</a><ul>
+<li><a class="reference internal" href="#funzionalita">Funzionalità</a></li>
+<li><a class="reference internal" href="#content-management-system">Content Management System</a></li>
+<li><a class="reference internal" href="#integrazione-con-app-myc4">Integrazione con app myC4</a></li>
+<li><a class="reference internal" href="#integrazione-stili-e-ui">Integrazione stili e ui</a></li>
+<li><a class="reference internal" href="#cronologia-revisioni">Cronologia revisioni</a></li>
+<li><a class="reference internal" href="#autori">Autori</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">Read the Docs Template 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Read the Docs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
